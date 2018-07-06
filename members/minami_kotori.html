@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>µ's - Home</title>
+  <link rel="stylesheet" href="/src/css/app.css">
+  <link rel="stylesheet" href="/src/css/muse.css">
+  <link rel="manifest" href="/manifest.json">
+  <script src="/src/js/app.js"></script>
+  <script src="/src/js/jquery-3.1.1.min.js"></script>
+  <!-- Apple -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="LL!gram for Apple">
+  <link rel="apple-touch-icon" href="/src/images/icons/apple-icon-144x144.png" sizes="144x144">
+  <!-- IE -->
+  <meta name="msapplication-TileImage" content="/src/images/icons/nozomi/app-icon-144x144.png">
+  <meta name="msapplication-TileColor" content="#fff">
+  <meta name="theme-color" content="#3F51B5">
+</head>
+<body>
+  <!-- TOP BAR -->
+  <div id="top-bar">
+    <div id="top-inner-r">
+      <button id="aqours-mode" class="switcher" onclick="redirectToMembers(this.id)">Switch to Aqours</button>
+    </div>
+  </div>
+  <!-- END TOP BAR -->
+  <!-- BOARD IMAGE -->
+  <img class="board-image-main" src="/src/images/muse/kotori-cover.jpg" alt="Minami Kotori">
+  <div id="wrapper">
+    <!-- HEADER -->
+    <h1 class="board-label-main">Minami Kotori</h1>
+    <h2 class="board-label-sub">CV: Uchida Aya</h2>
+    <button id="home" type="button" onclick="redirectToMembers(this.id)">Back to Home</button>
+
+    <div class="board">
+      <div class="board-post">
+        <h3 class="board-label-head">Profile</h3>
+        <p class="board-paragraph">
+          A 16-year-old, second-year high school student and Honoka's closest friend. They've been together since kindergarten. In contrast to Honoka, she has a kind and gentle personality, focuses on her studies, and is a model student. Although she's so gentle, she's also confident and reliable.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCRIPTS -->
+  <script src="/src/js/feed.js"></script>
+  <script src="/src/js/promise.js"></script>
+  <script src="/src/js/fetch.js"></script>
+  <script src="/src/js/muse.js"></script>
+</body>
+</html>

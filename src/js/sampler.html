@@ -1,0 +1,175 @@
+<html>
+<head>
+  <style>
+    @font-face {
+    	font-family: rbt_Black;
+    	src: url(/src/fonts/rbt_Black.ttf);
+    }
+
+    @font-face {
+      font-family: rbt_Bold;
+      src: url(/src/fonts/rbt_Bold.ttf);
+    }
+
+    @font-face {
+      font-family: rbt_Med;
+      src: url(/src/fonts/rbt_Med.ttf);
+    }
+
+    @font-face {
+    	font-family: rbt_Light;
+    	src: url(/src/fonts/rbt_Light.ttf);
+    }
+
+    h1 {
+      margin: 0px 0px 40px 0px;
+    }
+
+    #comment-field-wrapper {
+      width: calc(0.5rem + 51vw); /* 75% */
+      height: calc(0.5rem + 40vmin);
+      margin: auto;
+      box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+      padding: calc(0.5rem + 2.3vmin); /* 25px */
+      color: #e91e63;
+    }
+
+    .form-header {
+      font-family: rbt_Bold;
+    }
+
+    .form-field {
+      font-family: rbt_Light;
+    }
+
+    /* form starting stylings ------------------------------- */
+    .group 			  {
+      position:relative;
+      margin-bottom:45px;
+    }
+    input 				{
+      font-size:18px;
+      padding:10px 10px 10px 5px;
+      display:block;
+      width: calc(0.5rem + 50vw);
+      border:none;
+      border-bottom:1px solid #616161;
+    }
+    input:focus 		{ outline:none; }
+
+    /* LABEL ======================================= */
+    label 				 {
+      color: #616161;
+      font-size: calc(0.5rem + 1.5vmin);
+      font-weight:normal;
+      position:absolute;
+      pointer-events:none;
+      left:5px;
+      top:10px;
+      transition:0.2s ease all;
+      -moz-transition:0.2s ease all;
+      -webkit-transition:0.2s ease all;
+    }
+
+    /* active state */
+    input:focus ~ label, input:valid ~ label 		{
+      top:-20px;
+      font-size: calc(0.5rem + 1.2vmin);
+      color: #616161;
+    }
+
+    /* BOTTOM BARS ================================= */
+    .bar 	{ position:relative; display:block; width: calc(0.5rem + 50vw); }
+    .bar:before, .bar:after 	{
+      content:'';
+      height:2px;
+      width:0;
+      bottom:1px;
+      position:absolute;
+      background: #ff4081;
+      transition: 0.2s ease all;
+      -moz-transition: 0.2s ease all;
+      -webkit-transition: 0.2s ease all;
+    }
+    .bar:before {
+      left:50%;
+    }
+    .bar:after {
+      right:50%;
+    }
+
+    /* active state */
+    input:focus ~ .bar:before, input:focus ~ .bar:after {
+      width:50%;
+    }
+
+    /* HIGHLIGHTER ================================== */
+    .highlight {
+      position:absolute;
+      height:60%;
+      width:100px;
+      top:25%;
+      left:0;
+      pointer-events:none;
+      opacity:0.5;
+    }
+
+    /* active state */
+    input:focus ~ .highlight {
+      -webkit-animation:inputHighlighter 0.3s ease;
+      -moz-animation:inputHighlighter 0.3s ease;
+      animation:inputHighlighter 0.3s ease;
+    }
+
+    /* ANIMATIONS ================ */
+    @-webkit-keyframes inputHighlighter {
+    	from { background:#5264AE; }
+      to 	{ width:0; background:transparent; }
+    }
+    @-moz-keyframes inputHighlighter {
+    	from { background:#5264AE; }
+      to 	{ width:0; background:transparent; }
+    }
+    @keyframes inputHighlighter {
+    	from { background:#5264AE; }
+      to 	{ width:0; background:transparent; }
+    }
+  </style>
+  <link rel="stylesheet" href="/src/css/muse.css">
+</head>
+<body>
+  <!--
+<script>
+var commentParagraph = document.createElement('p'); // comment body
+commentParagraph.className = 'comment-paragraph';
+commentParagraph.textContent = 'Hello World!';
+/*
+var paragraphText = document.createTextNode("HELLO WORLD!");
+commentParagraph.appendChild(paragraphText);
+*/
+
+document.body.appendChild(commentParagraph);
+</script>
+-->
+<div id="comment-field-wrapper">
+  <h1 class="form-header">Comment</h1>
+  <form id="comment" class="form-field">
+    <div class="group">
+      <input type="text" required></input>
+      <span class="highlight"></span>
+      <span class="bar"></span>
+      <label>Name</label>
+    </div>
+
+    <div class="group">
+      <input type="text" required></input>
+      <span class="highlight"></span>
+      <span class="bar"></span>
+      <label>Comment</label>
+    </div>
+  </form>
+  <button id="add" type="button" onclick="">Post</button>
+  <button id="cancel" class="cancel-btn" type="button" onclick="">Cancel</button>
+</div>
+</body>
+</html>

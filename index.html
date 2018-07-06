@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>µ's - Home</title>
+  <link rel="stylesheet" href="/src/css/app.css">
+  <link rel="stylesheet" href="/src/css/muse.css">
+  <link rel="manifest" href="/manifest.json">
+  <script src="/src/js/app.js"></script>
+  <script src="/src/js/jquery-3.1.1.min.js"></script>
+  <!-- Apple -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="LL!gram for Apple">
+  <link rel="apple-touch-icon" href="/src/images/icons/apple-icon-144x144.png" sizes="144x144">
+  <!-- IE -->
+  <meta name="msapplication-TileImage" content="/src/images/icons/nozomi/app-icon-144x144.png">
+  <meta name="msapplication-TileColor" content="#fff">
+  <meta name="theme-color" content="#3F51B5">
+</head>
+<body>
+<!-- TOP BAR -->
+<div id="top-bar">
+  <!--
+  <div id="top-inner-r">
+    <button id="aqours-mode" class="switcher" onclick="redirectToMembers(this.id)">Switch to Aqours</button>
+  </div> -->
+  <div id="top-inner-l">
+    <button id="home-btn" onclick="redirectToMembers(this.id)">Home</button>
+  </div>
+</div>
+<!-- END TOP BAR -->
+<!-- BOARD IMAGE -->
+<img class="board-image-main" src="/src/images/mfs-image.jpeg" alt="Festival Muse! Love Live! School Idol Festival">
+
+<div id="wrapper">
+  <!-- HEADER -->
+  <h1 class="board-label-main">Celebrating µ's festivity<br>through the years!</h1>
+  <h2 class="board-label-sub">Discover the nine stellar maidens that captivated the world.</h2>
+  <!-- END HEADER -->
+  <!-- CENTRAL BOARD -->
+  <div class="board">
+    <div class="board-post">
+      <img class="board-image-head" src="/src/images/muse-group-2.jpg" alt="The nine members of µ's (Muse)">
+      <h3 class="board-label-head">Who are the µ's?</h3>
+      <p class="board-paragraph">
+        They are a group of nine students from Otonokizaka Academy who became school idols to save their school from being shut down.
+        Their purpose was to bring attention to the school. The group disbanded when the third years graduated.<br><br>
+        The name µ's comes from Greek mythology's "nine goddesses of music", composed of nine members. Nozomi Tojo was the one
+        who gave the name to the group since she thought it was a fit as they were also composed of nine members.
+      </p>
+      <!-- <button id="members-muse" class="board-button" type="button" onclick="redirectToMembers(this.id)">Discover µ's</button> -->
+      <button id="honoka" type="button" onclick="redirectToMembers(this.id)">Kousaka Honoka</button>
+      <button id="umi" type="button" onclick="redirectToMembers(this.id)">Sonoda Umi</button>
+      <button id="kotori" type="button" onclick="redirectToMembers(this.id)">Minami Kotori</button>
+      <button id="rin" type="button" onclick="redirectToMembers(this.id)">Hoshizora Rin</button>
+      <button id="maki" type="button" onclick="redirectToMembers(this.id)">Nishikino Maki</button>
+      <button id="hanayo" type="button" onclick="redirectToMembers(this.id)">Koizumi Hanayo</button>
+      <button id="nico" type="button" onclick="redirectToMembers(this.id)">Yazawa Nico</button>
+      <button id="eli" type="button" onclick="redirectToMembers(this.id)">Ayase Eli</button>
+      <button id="nozomi" type="button" onclick="redirectToMembers(this.id)">Toujou Nozomi</button>
+    </div>
+    <div class="board-post">
+      <img class="board-image-head" src="/src/images/llsif-title-muse.png" alt="Title screen of Love Live! School Idol Festival (JP ver.) featuring µ's">
+      <h3 class="board-label-head">What is Love Live! School Idol Festival?</h3>
+      <p class="board-paragraph">
+        This is a social rhythm game for mobile devices (both for iOS and Android) produced by KLabGames and bushiroad.
+        In the game, the player creates units based on collectible virtual cards and performs Live concerts with a designated unit.
+        All the songs used in the game are sung by members of the Love Live! franchise idol groups: μ's, A-RISE and Aqours.
+      </p>
+      <button id="llsif-learn-more" class="board-button" onclick="redirectToMembers(this.id)">Learn more</button>
+    </div>
+    <div class="board-post">
+      <h3 class="board-label-head">Page Debug Triggers</h3>
+      <p class="board-paragraph">
+        Area to be used for placing debugging triggers.
+      </p>
+    </div>
+  </div>
+  <!-- END CENTRAL BOARD -->
+  <!-- LIGHTBOX COMMENT FIELDS -->
+  <div id="lightbox-shadow">
+    <div id="comment-field-wrapper">
+      <h1 class="form-header">Comment</h1>
+      <form id="comment" class="form-field">
+        <div class="group">
+          <input type="text" required></input>
+          <span class="highlight"></span>
+          <label>Name</label>
+        </div>
+
+        <div class="group">
+          <input type="text" required></input>
+          <span class="highlight"></span>
+          <label>Comment</label>
+        </div>
+      </form>
+      <div id="postCtrl-container">
+        <button id="add" class="post-controls" type="button" onclick="">Post</button>
+        <button id="cancel" class="post-controls cancel-btn" type="button" onclick="">Cancel</button>
+      </div>
+    </div>
+  </div>
+  <!-- END LBX COMMENT FIELDS -->
+  <!-- COMMENTS BOARD -->
+  <div id="heading-controls">
+    <h3 class="board-label-head">Comments</h3>
+    <button id="commentTrigger" class="trigger-button board-button">Add a Comment</button>
+  </div>
+  <div id="comments-board">
+    <div class="comment-post">
+      <div class="comment-user-heading">
+        <div class="user-photo-container">
+          <img class="user-photo" src="/src/images/kuuko-shy-sample.jpg" alt="user">
+        </div>
+        <div class="user-name-container">
+          <a href="#" class="user-link" target="_blank">Yasaka Cthuguha</a>
+          <span class="timestamp">7/5/2018 10:26AM</span>
+        </div>
+      </div>
+      <div class="comment-body">
+        <p class="comment-paragraph">
+          This is a static content. If you could read this, the whole page has been cached.<br>
+          A dynamic comment is supposed to follow. If the content is not available, one of the following occurred:<br>
+          1. the comment and its script did not get cached by the browser, or<br>
+          2. the fetch request to https://www.httpbin.org/get gave an error 503
+        </p>
+      </div>
+    </div>
+  </div>
+  <!-- END COMMENTS BOARD -->
+</div>
+
+<!-- SCRIPTS -->
+<script src="/src/js/feed.js"></script>
+<script src="/src/js/promise.js"></script>
+<script src="/src/js/fetch.js"></script>
+<script src="/src/js/muse.js"></script>
+</body>
+</html>
