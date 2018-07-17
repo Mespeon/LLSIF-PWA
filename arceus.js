@@ -1,31 +1,75 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.4.1/workbox-sw.js");
+importScripts('/src/js/idb.js');
+importScripts('/src/js/util.js');
 
 
 self.__precacheManifest = [].concat(self.__precacheManifest || []);
 
 // CATCH ALL FROM GOOGLE APIS USING A REGULAR EXPRESSION
 workbox.routing.registerRoute(/.*(?:googleapis|gstatic)\.com.*$/, workbox.strategies.staleWhileRevalidate({
-  cacheName: 'google-icons'
+  cacheName: 'google-images',
+  cacheExpiration: {
+    maxEntries: 20,
+    maxAgeSeconds: 60 * 120
+  }
 }));
 
-// CATCH ALL REQUESTS FROM FIREBASE
-workbox.routing.registerRoute(/.*(?:firebasestorage\.googleapis)\.com.*$/, workbox.strategies.staleWhileRevalidate({
-  cacheName: 'firebase-thumbnails'
-}));
+// INDEXED DB CUSTOM HANDLER
+workbox.routing.registerRoute('https://otonokizaka-3a6d9.firebaseio.com/comments.json', function(args) {
+  return fetch(args.event.request).then(function(reply) {
+        // return console.log('[SW] Cleaning cache during fetch...');
+        // cleanCache(CACHE_DYNAMIC_NAME, 10);
+        // cache.put(event.request, reply.clone());
+
+        // USING INDEXEDDB FOR DYNAMIC CONTENT
+        var clonedReply = reply.clone();
+        clearThis('comments').then(function() {
+          clonedReply.json().then(function(replyData) {
+              for (var key in replyData) {
+                  writeThis('comments', replyData[key]);
+              }
+          });
+        });
+        return reply;
+    });
+});
+
+workbox.routing.registerRoute(function(routeData) {
+  // routeData.url = returns the URL of the request
+  // returns true if the request accepts text/html
+  return (routeData.event.request.headers.get('accept').includes('text/html'));
+}, function(args) {
+    return caches.match(args.event.request).then(function(response) {
+      // if request is cached, response with it
+      if (response) {
+        return response;
+      }
+      // if not, cache the response, clone it, then response with it
+      else {
+        // Dynamic caching - useful for per-view caching
+        return fetch(args.event.request)
+        .then(function(resp) {
+          return caches.open('llsif-dynamics')
+          .then(function(cache) {
+            cache.put(args.event.request.url, resp.clone());  // remove to restore automatic dynamic caching
+            return resp;
+          })
+        })
+        // Offline page response
+        .catch(function(error) {
+          return caches.match('/offline.html').then(function(res) {
+            return res;
+          });
+        });
+      }
+    });
+});
 
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute([
   {
-    "url": "_index.html",
-    "revision": "c3709727b5523e7d910411728164b5b2"
-  },
-  {
     "url": "404.html",
     "revision": "0a27a4163254fc8fce870c8cc3a3f94f"
-  },
-  {
-    "url": "arceus-base.js",
-    "revision": "a5653d89e6ee984a23144aeba1115886"
   },
   {
     "url": "favicon.ico",
@@ -33,51 +77,11 @@ workbox.precaching.precacheAndRoute([
   },
   {
     "url": "index.html",
-    "revision": "fce040f8b5d2db4f00769abad270692e"
+    "revision": "24df8bd2dd30b3edfb3b580bb7c12dca"
   },
   {
     "url": "manifest.json",
-    "revision": "b34f5861fbe18043145771a9c44c7ad6"
-  },
-  {
-    "url": "members/ayase_eli.html",
-    "revision": "f1b08aab0323172e8556b3e6eede3c96"
-  },
-  {
-    "url": "members/hoshizora_rin.html",
-    "revision": "5b67d719e7563831119791c5ab31ab7a"
-  },
-  {
-    "url": "members/index.html",
-    "revision": "fa78bf54650dbf102af83b783dae94ee"
-  },
-  {
-    "url": "members/koizumi_hanayo.html",
-    "revision": "7d2b917b887e255fe202d136a63a1e9e"
-  },
-  {
-    "url": "members/kousaka_honoka.html",
-    "revision": "cc845113bcd5f3b8ae18dfa93a183528"
-  },
-  {
-    "url": "members/minami_kotori.html",
-    "revision": "ef2b0ac508c28299f917c09bbb1fc0fa"
-  },
-  {
-    "url": "members/nishikino_maki.html",
-    "revision": "2c0396edddd407e2df1172405704b07b"
-  },
-  {
-    "url": "members/sonoda_umi.html",
-    "revision": "fc20d3d0da45b3ec44d897fbfb2d50f6"
-  },
-  {
-    "url": "members/toujou_nozomi.html",
-    "revision": "986a6449ccde916f208f578e2f5a7e03"
-  },
-  {
-    "url": "members/yazawa_nico.html",
-    "revision": "251da502419adf82171e222098e407c1"
+    "revision": "3d512578a3530b997872b555319f224f"
   },
   {
     "url": "offline.html",
@@ -188,44 +192,40 @@ workbox.precaching.precacheAndRoute([
     "revision": "317a4210ef29a41c456503c8e5951448"
   },
   {
-    "url": "src/js/app.js",
-    "revision": "8c478538dbdfec59ed49a2978b6d9021"
+    "url": "src/js/min/app.min.js",
+    "revision": "a92408040947fb985dfc59a0d5dadb64"
   },
   {
-    "url": "src/js/feed.js",
-    "revision": "1083fc076e80f006fbb6022eb23d3b7e"
+    "url": "src/js/min/feed.min.js",
+    "revision": "b0cf966f4fe9f5b981dcd33accd4d889"
   },
   {
-    "url": "src/js/fetch.js",
-    "revision": "6b82fbb55ae19be4935964ae8c338e92"
+    "url": "src/js/min/fetch.min.js",
+    "revision": "f044946c220164eed257b4e2fcb39234"
   },
   {
-    "url": "src/js/idb.js",
-    "revision": "017ced36d82bea1e08b08393361e354d"
+    "url": "src/js/min/idb.min.js",
+    "revision": "88ae80318659221e372dd0d1da3ecf9a"
   },
   {
-    "url": "src/js/jquery-3.1.1.min.js",
+    "url": "src/js/min/jquery-3.1.1.min.js",
     "revision": "e071abda8fe61194711cfc2ab99fe104"
   },
   {
-    "url": "src/js/jquery-ui.js",
-    "revision": "358b27462a779ef5925ac81869985592"
+    "url": "src/js/min/jquery-ui.min.js",
+    "revision": "32bb69af59ef8f2bcce7d8f35365d0b7"
   },
   {
-    "url": "src/js/muse.js",
-    "revision": "6e0e454b2ba6ad31d45fca6931ba9326"
+    "url": "src/js/min/muse.min.js",
+    "revision": "62c48fd5c61cd28de3743eceef7ccd4c"
   },
   {
-    "url": "src/js/promise.js",
-    "revision": "10c2238dcd105eb23f703ee53067417f"
+    "url": "src/js/min/promise.min.js",
+    "revision": "3468ef1e50a211ea36c24d4abd41062b"
   },
   {
-    "url": "src/js/util.js",
-    "revision": "bcfe82845984e808a70281ae95b1acb9"
-  },
-  {
-    "url": "sw.js",
-    "revision": "4c5e0f108da0b1ddd58617fcc560a1b3"
+    "url": "src/js/min/util.min.js",
+    "revision": "448b454ddc175e18b54258f0f94abc09"
   },
   {
     "url": "src/images/llsif-aqours-group-2.jpg",
@@ -260,3 +260,131 @@ workbox.precaching.precacheAndRoute([
     "revision": "df867051782fd715ae77e3d272c742f8"
   }
 ]);
+
+// SYNC EVENT LISTENER
+self.addEventListener('sync', function(event) {
+  console.log('[SW Arceus] Background sync in progress. ', event);
+  if (event.tag === 'llsif-sync-comment') {
+    console.log('[SW Arceus] Attempting to sync comments...');
+    event.waitUntil(
+      readThis('sync-comments').then(function(data) {
+        for (var posts of data) {
+          // https://otonokizaka-3a6d9.firebaseio.com/comments.json
+
+          // APPEND FORM DATA AS KEY PAIRS
+          var commentData = new FormData();
+          commentData.append('id', posts.id);
+          commentData.append('avatar', posts.avatar, posts.id + '.png');
+          commentData.append('timestamp', posts.id);
+          commentData.append('user', posts.user);
+          commentData.append('txt', posts.txt);
+
+          console.log('[SW Arceus] Logged data from sync-comments IndexedDB and commentData FormData():');
+          //console.log(commentData.getAll());
+          console.log("ID: " + posts.id + " / " + commentData.get('id'));
+          console.log("Avatar File: " + posts.avatar + " / " + commentData.get('avatar'));
+          console.log("Timestamp: " + posts.timestamp + " / " + commentData.get('timestamp'));
+          console.log("User: " + posts.user + " / " + commentData.get('user'));
+          console.log("Comment Text: " + posts.txt + " / " + commentData.get('txt'));
+
+          fetch('https://us-central1-otonokizaka-3a6d9.cloudfunctions.net/storeCommentData', {
+            method: 'POST',
+            /*
+            headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json'
+            },*/
+            body: commentData
+            /*
+            JSON.stringify({
+              // FOLLOW STRUCTURE FORMAT IN FIREBASE
+              id: posts.id,
+              avatar: 'https://firebasestorage.googleapis.com/v0/b/otonokizaka-3a6d9.appspot.com/o/default.jpg?alt=media&token=b8736d57-e915-41f4-8f68-9ace1496c45e',
+              timestamp: posts.id,
+              user: posts.user,
+              txt: posts.txt
+            })
+            */
+          }).then(function(response) {
+            console.log('[SW Arceus] Data sync sent.', response);
+            if (response.ok) {
+                //clearSpecific('sync-comments', posts.id);
+                response.json().then(function(responseData) {
+                  clearSpecific('sync-comments', responseData.id);  // delete this from indexedDB
+                  console.log('[SW Arceus] Deleting ID from indexedDB: ', responseData.id);
+                });
+            }
+            else {
+              console.log('[SW Arceus] Something went wrong. IndexedDB not cleared.');
+            }
+          }).catch(function(ex) {
+            console.log('[SW Arceus] Error occured while sending data.', ex);
+          });
+        }
+      })
+    );
+  }
+});
+
+// ACTIONS ON NOTIFICATION CLICK
+self.addEventListener('notificationclick', function(event) {
+  // DETERMINE THE NOTIFICATION
+  var notification = event.notification;
+  var action = event.action;
+
+  console.log('[SW] Interacted with notification: ', notification);
+
+  if (action === 'confirm') {
+    console.log('[SW] Notification action selected: ', action);
+    notification.close();
+  }
+  else {
+    console.log('[SW] Notification action selected: ', action);
+    // DO THIS FOR ALL ACTIONS THAT ARE NOT CONFIRMATORY
+    // This will open or refresh the page if the notification is clicked.
+    event.waitUntil(
+      clients.matchAll().then(function(handledClients) {
+        var clientsFound = handledClients.find(function(c) {
+          return c.visibilityState === 'visible';
+        });
+
+        // Open a page in browser
+        if (clientsFound !== undefined) {
+          clientsFound.navigate(notification.data.url);
+          clientsFound.focus();
+        }
+        else {
+          // Refresh page if a window is found
+          clients.openWindow(notification.data.url);
+        }
+        notification.close();
+      })
+    );
+  }
+});
+
+// ACTIONS ON NOTIFICATION CLOSE
+self.addEventListener('notificationclose', function(event) {
+  console.log('[SW] Notification was closed. ', event);
+});
+
+// ACTIONS ON PUSH RECEIVE
+self.addEventListener('push', function(event) {
+  console.log('[SW] Incoming push message received.', event);
+
+  var payLoad = {title: 'No title', content: 'No content', openUrl: '/404.html'};
+  if (event.data) {
+    payLoad = JSON.parse(event.data.text());
+  }
+
+  var options = {
+    body: payLoad.content,
+    icon: '/src/images/icons/nozomi/app-icon-96x96.png',
+    badge: '/src/images/icons/nozomi/app-icon-96x96.png',
+    data: {
+      url: payLoad.openUrl
+    }  // passes extra metadata to the notification
+  }
+
+  event.waitUntil(self.registration.showNotification(payLoad.title, options));
+});
