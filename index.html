@@ -9,8 +9,7 @@
   <link rel="stylesheet" href="/src/css/app.css">
   <link rel="stylesheet" href="/src/css/muse.css">
   <link rel="manifest" href="/manifest.json">
-  <script src="/src/js/app.js"></script>
-  <script src="/src/js/jquery-3.1.1.min.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <!-- Apple -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -19,125 +18,432 @@
   <!-- IE -->
   <meta name="msapplication-TileImage" content="/src/images/icons/nozomi/app-icon-144x144.png">
   <meta name="msapplication-TileColor" content="#fff">
-  <meta name="theme-color" content="#3F51B5">
+  <meta name="theme-color" content="#e91e63">
 </head>
 <body>
 <!-- TOP BAR -->
-<div id="top-bar">
-  <!--
-  <div id="top-inner-r">
-    <button id="aqours-mode" class="switcher" onclick="redirectToMembers(this.id)">Switch to Aqours</button>
-  </div> -->
-  <div id="top-inner-l">
-    <button id="home-btn" onclick="redirectToMembers(this.id)">Home</button>
+<!--
+THIS NAV BAR IS CONSISTED OF TWO SETS,
+ONE FOR TRANSPARENT, ONE FOR SOLID.
+
+THE BAR ITSELF DOES NOT NEED SCALING, HOWEVER CHILD ELEMENTS
+SHOULD AND MUST BE SCALED USING MEDIA QUERIES OR STYLING RULES.
+-->
+<div id="navbar--for-widescreens" class="navbar">
+    <div class="navbar-flex-container">
+      <div class="flexbox"><i id="navbar--drawer-switch" class="toggle icons material-icons">menu</i><span id="page-title" class='navbar-text'>Love Live!</span></div>
+      <div class="hide--on-narrow-viewports flexbox flex-spacer"></div>
+      <div class="hide--on-narrow-viewports flexbox"><a href="#otonokizaka" class="navbar--link">Otonokizaka</a></div>
+      <div class="hide--on-narrow-viewports flexbox"><a href="#uranohoshi" class="navbar--link">Uranohoshi</a></div>
+    </div>
+</div>
+
+<div id="navbar--widescreens-transparent" class="navbar navbar-transparent">
+  <div class="navbar-flex-container">
+    <div class="flexbox"><i id="navbar--drawer-switch" class="toggle icons material-icons">menu</i><span id="page-title" class='navbar-text'>Love Live!</span></div>
+    <div class="hide--on-narrow-viewports flexbox flex-spacer"></div>
+    <div class="hide--on-narrow-viewports flexbox"><a href="#otonokizaka" class="navbar--link-transparent">Otonokizaka</a></div>
+    <div class="hide--on-narrow-viewports flexbox"><a href="#uranohoshi" class="navbar--link-transparent">Uranohoshi</a></div>
   </div>
 </div>
 <!-- END TOP BAR -->
-<!-- BOARD IMAGE -->
-<img class="board-image-main" src="/src/images/mfs-image.jpeg" alt="Festival Muse! Love Live! School Idol Festival">
 
-<div id="wrapper">
-  <!-- HEADER -->
-  <h1 class="board-label-main">Celebrating µ's festivity<br>through the years!</h1>
-  <h2 class="board-label-sub">Discover the nine stellar maidens that captivated the world.</h2>
-  <!-- END HEADER -->
-  <!-- CENTRAL BOARD -->
-  <div class="board">
-    <div class="board-post">
-      <img class="board-image-head" src="/src/images/muse-group-2.jpg" alt="The nine members of µ's (Muse)">
-      <h3 class="board-label-head">Who are the µ's?</h3>
-      <p class="board-paragraph">
-        They are a group of nine students from Otonokizaka Academy who became school idols to save their school from being shut down.
-        Their purpose was to bring attention to the school. The group disbanded when the third years graduated.<br><br>
-        The name µ's comes from Greek mythology's "nine goddesses of music", composed of nine members. Nozomi Tojo was the one
-        who gave the name to the group since she thought it was a fit as they were also composed of nine members.
-      </p>
-      <!-- <button id="members-muse" class="board-button" type="button" onclick="redirectToMembers(this.id)">Discover µ's</button> -->
-      <button id="honoka" type="button" onclick="redirectToMembers(this.id)">Kousaka Honoka</button>
-      <button id="umi" type="button" onclick="redirectToMembers(this.id)">Sonoda Umi</button>
-      <button id="kotori" type="button" onclick="redirectToMembers(this.id)">Minami Kotori</button>
-      <button id="rin" type="button" onclick="redirectToMembers(this.id)">Hoshizora Rin</button>
-      <button id="maki" type="button" onclick="redirectToMembers(this.id)">Nishikino Maki</button>
-      <button id="hanayo" type="button" onclick="redirectToMembers(this.id)">Koizumi Hanayo</button>
-      <button id="nico" type="button" onclick="redirectToMembers(this.id)">Yazawa Nico</button>
-      <button id="eli" type="button" onclick="redirectToMembers(this.id)">Ayase Eli</button>
-      <button id="nozomi" type="button" onclick="redirectToMembers(this.id)">Toujou Nozomi</button>
-    </div>
-    <div class="board-post">
-      <img class="board-image-head" src="/src/images/llsif-title-muse.png" alt="Title screen of Love Live! School Idol Festival (JP ver.) featuring µ's">
-      <h3 class="board-label-head">What is Love Live! School Idol Festival?</h3>
-      <p class="board-paragraph">
-        This is a social rhythm game for mobile devices (both for iOS and Android) produced by KLabGames and bushiroad.
-        In the game, the player creates units based on collectible virtual cards and performs Live concerts with a designated unit.
-        All the songs used in the game are sung by members of the Love Live! franchise idol groups: μ's, A-RISE and Aqours.
-      </p>
-      <button id="llsif-learn-more" class="board-button" onclick="redirectToMembers(this.id)">Learn more</button>
-    </div>
-    <div class="board-post">
-      <h3 class="board-label-head">Page Debug Triggers</h3>
-      <p class="board-paragraph">
-        Area to be used for placing debugging triggers.
-      </p>
-    </div>
+<!-- HEADER -->
+<section id="header">
+  <div id="cover-image-container">
+    <img id="cover-image" src="/src/images/mfs-image-sfw.jpg" alt="Festival Muse! Love Live! School Idol Festival">
+    <!-- IMG DUPLICATES FOR FIREFOX (SEEMS LIKE IT DOES NOT ACCEPT CSS-PASSED SRC VALUES) -->
+    <img class="alter-photo" src="/src/images/muse-momoland-cover-2.png" alt="Festival Muse! Love Live! School Idol Festival">
   </div>
-  <!-- END CENTRAL BOARD -->
-  <!-- LIGHTBOX COMMENT FIELDS -->
-  <div id="lightbox-shadow">
-    <div id="comment-field-wrapper">
-      <h1 class="form-header">Comment</h1>
-      <form id="comment" class="form-field">
-        <div class="group">
-          <input type="text" required></input>
-          <span class="highlight"></span>
-          <label>Name</label>
-        </div>
-
-        <div class="group">
-          <input type="text" required></input>
-          <span class="highlight"></span>
-          <label>Comment</label>
-        </div>
-      </form>
-      <div id="postCtrl-container">
-        <button id="add" class="post-controls" type="button" onclick="">Post</button>
-        <button id="cancel" class="post-controls cancel-btn" type="button" onclick="">Cancel</button>
+  <div id="header-text">
+    <div class="wrapper padded">
+      <div class="container">
+        <h1 class="board-label-main">Spreading musical joy through the years!</h1>
+        <h2 class="board-label-sub">Discover the stellar maidens that captivated the world.</h2>
       </div>
     </div>
   </div>
-  <!-- END LBX COMMENT FIELDS -->
-  <!-- COMMENTS BOARD -->
-  <div id="heading-controls">
-    <h3 class="board-label-head">Comments</h3>
-    <button id="commentTrigger" class="trigger-button board-button">Add a Comment</button>
-  </div>
-  <div id="comments-board">
-    <div class="comment-post">
-      <div class="comment-user-heading">
-        <div class="user-photo-container">
-          <img class="user-photo" src="/src/images/kuuko-shy-sample.jpg" alt="user">
-        </div>
-        <div class="user-name-container">
-          <a href="#" class="user-link" target="_blank">Yasaka Cthuguha</a>
-          <span class="timestamp">7/5/2018 10:26AM</span>
+</section>
+
+<div class="divider"></div>
+
+<!-- CENTRAL BOARDS-->
+<section class="central-board">
+  <div class="wrapper">
+    <div class="container">
+      <!-- POST BOARD -->
+      <div class="board">
+        <div class="board-post">
+          <div class="paragraph-container">
+            <h3 id="otonokizaka" class="board-header">Otonokizaka High School Idols</h3>
+            <p class="board-paragraph">
+              The girls are popularly known as µ's. They are a group of nine students from Otonokizaka Academy who became school idols to save their school from being shut down.
+              Their purpose was to bring attention to the school. The group disbanded when the third years graduated.<br><br>
+              The name µ's comes from Greek mythology's "nine goddesses of music", composed of nine members. Nozomi Tojo was the one
+              who gave the name to the group since she thought it was a fit as they were also composed of nine members.
+            </p>
+          </div>
+          <div class="section-photobox">
+            <img src="/src/images/muse-group.jpg" class="photo">
+            <div class="caption">The nine members of μ's (left to right): Toujou Nozomi, Hoshizora Rin, Koizumi Hanayo, Minami Kotori,
+              Kousaka Honoka, Sonoda Umi, Yazawa Nico, Nishikino Maki, Ayase Eli
+            </div>
+          </div>
+          <div class="cards">
+            <div class="cardholder">
+              <a href="/members" class="card" rel="noopener" target="_blank">
+                <div class="card-container">
+                  <div class="card-title">Discover µ's</div>
+                  <div class="card-desc">Get to know the members of µ's.</div>
+                  <p class="card-label">Members</p>
+                </div>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="comment-body">
-        <p class="comment-paragraph">
-          This is a static content. If you could read this, the whole page has been cached.<br>
-          A dynamic comment is supposed to follow. If the content is not available, one of the following occurred:<br>
-          1. the comment and its script did not get cached by the browser, or<br>
-          2. the fetch request to https://www.httpbin.org/get gave an error 503
+      <!-- END POST BOARD -->
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SECOND CENTRAL BOARD -->
+<!-- PRIMARY WIDESCREEN LAYOUT FOR THE URANOHOSHI GIRLS ACADEMY POST.
+THIS SET IS HIDDEN ON MOBILE DEVICES AND ONLY DISPLAYED ON M > L DISPLAYS. -->
+<section class="central-board widescreen--uranohoshi-girls-academy">
+  <div class="wrapper">
+    <div class="container">
+      <!-- POST BOARD -->
+      <div class="board">
+        <div class="board-post">
+          <div class="flex-container">
+            <div class="flex-panel">
+              <!-- IMAGE -->
+              <div class="flex--photobox">
+                <img src="/src/images/llsif-aqours-group-2.jpg" class="flex--photo">
+              </div>
+            </div>
+            <div class="flex-panel">
+              <!-- TEXT -->
+              <div class="flex--paragraph-container">
+                <h3 id="uranohoshi" class="board-header flex--board-header">Uranohoshi Girls' Academy School Idols</h3>
+                <p class="board-paragraph flex--paragraph">
+                  From the sunny shores of Uchiura, Numazu comes Aqours. Like their fellow school idols from Otonokizaka High,
+                  they are a group of nine schoolgirls who became idols in order to save Uranohoshi Girls' Academy
+                  from shutting down and being merged with another school in Numazu.<br><br>
+                  Takami Chika, inspired by μ's, gathered her friends and formed the group Aqours. The name could also be pronounced as aqua,
+                  with Uchiura being a seaside county. They participated in the Love Live school idol competition to save their school.
+                </p>
+              </div>
+            </div>
+          </div>
+          <!-- CARD -->
+          <div class="cards">
+            <div class="cardholder">
+              <a href="/members" class="card" rel="noopener" target="_blank">
+                <div class="card-container">
+                  <div class="card-title">Discover Aqours</div>
+                  <div class="card-desc">Read about the school idols of Uranohoshi Girls' Academy.</div>
+                  <p class="card-label">Members</p>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- END POST BOARD -->
+    </div>
+  </div>
+</section>
+
+<!-- ALTERNATIVE CENTRAL BOARD FOR URANOHOSHI -->
+<!--
+THIS SET IS HIDDEN ON WIDESCREEN DEVICES AND ONLY VISIBLE
+ON MOBILE DEVICES. THIS SECTION USES THE SAME LAYOUT AS THE U'S POST ABOVE. -->
+<section class="central-board mobile--uranohoshi-girls-academy">
+  <div class="wrapper">
+    <div class="container">
+      <!-- POST BOARD -->
+      <div class="board">
+        <div class="board-post">
+          <div class="paragraph-container">
+            <h3 id="uranohoshi" class="board-header">Uranohoshi Girls' Academy School Idols</h3>
+            <p class="board-paragraph">
+              From the sunny shores of Uchiura, Numazu comes Aqours. Like their fellow school idols from Otonokizaka High,
+              they are a group of nine schoolgirls who became idols in order to save Uranohoshi Girls' Academy
+              from shutting down and being merged with another school in Numazu.<br><br>
+              Takami Chika, inspired by μ's, gathered her friends and formed the group Aqours. The name could also be pronounced as aqua,
+              with Uchiura being a seaside county. They participated in the Love Live school idol competition to save their school.
+            </p>
+          </div>
+          <div class="section-photobox">
+            <img src="/src/images/llsif-aqours-group-3.jpg" class="photo">
+            <div class="caption">The nine members of Aqours (left to right, top to bottom): Kunikida Hanamaru, Matsuura Kanan, Kurosawa Dia, Ohara Mari,
+              Kurosawa Ruby, Watanabe You, Takami Chika, Sakurauchi Riko, Tsushima Yoshiko
+            </div>
+          </div>
+          <div class="cards">
+            <div class="cardholder">
+              <a href="/members" class="card" rel="noopener" target="_blank">
+                <div class="card-container">
+                  <div class="card-title">Discover Aqours</div>
+                  <div class="card-desc">Read about the school idols of Uranohoshi Girls' Academy.</div>
+                  <p class="card-label">Members</p>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- END POST BOARD -->
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- THIRD CENTRAL BOARD -->
+<section class="central-board">
+  <div class="wrapper">
+    <div class="container">
+      <!-- POST BOARD -->
+      <div class="board centered nigi">
+        <div class="board-post">
+          <div class="paragraph-container expanded">
+            <h3 class="board-header">Love Live! School Idol Festival</h3>
+            <p class="board-paragraph centered">
+              Love Live! School Idol Festival is a social rhythm game for mobile devices (both for iOS and Android) produced by KLabGames and bushiroad.
+              In the game, the player creates units based on collectible virtual cards and performs Live concerts with a designated unit.<br><br>
+              All the songs used in the game are sung by members of the Love Live! franchise idol groups: μ's, A-RISE and Aqours.
+            </p>
+          </div>
+          <div class="section-photobox expanded">
+            <img src="/src/images/llsif-title-muse.jpg" class="photo">
+            <div class="caption">Love Live! School Idol Festival Title Screen (μ's)</div>
+          </div>
+          <div class="cards hidari">
+            <div class="cardholder">
+                <a href="http://decaf.kouhi.me/lovelive/" class="card" rel="noopener" target="_blank">
+                  <div class="card-container">
+                    <div class="card-title">Discover Love Live!</div>
+                    <div class="card-desc">Tap to the rhythm with μ's or Aqours.</div>
+                    <p class="card-label">Wiki</p>
+                  </div>
+                </a>
+              </div>
+          </div>
+        </div>
+      </div>
+      <!-- END POST BOARD -->
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- COMMENT SECTION -->
+<section id="comment-board">
+  <div class="wrapper">
+    <div class="container--comments">
+      <!-- COMMENTS BOARD HEADER -->
+      <div id="heading-controls">
+        <h3 id="reacts" class="board-header">Reacts</h3>
+        <span class="caption">This section is under active development. If you see blank comment cards, then they are shown as intended.</span>
+        <div class="comments--button-container">
+          <button id="addReact--trigger" class="outlined">add react</button>
+        </div>
+      </div>
+      <!-- COMMENTS BOARD
+        BACKUP OLD STYLING BEFORE IMPLEMENTING NEW STYLES.
+        REUSE ALL CLASS NAMES.
+      -->
+      <div id="comments-board">
+        <div class="comment-post">
+          <div class="comment-user-heading">
+  	        <div class="user-photo-container"><img class="user-photo" src="/src/images/legacy/muse-umi.jpg" alt="user"></div>
+
+	          <div class="user-name-container">
+	             <a class="user-link" href="#">Sonoda Umi</a>
+	             <span class="timestamp">7/8/2018 1:34AM</span>
+	          </div>
+          </div>
+
+          <div class="comment-body">
+            <p class="comment-paragraph">This is a static comment added directly into the page. A clearComment() method should clear this.
+              If you could read this, the clearComment() method failed to do so, or the script was intentionally left out.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<section id="footer">
+  <div class="wrapper">
+    <div class="container">
+      <div class="footer--texts">
+        <p class="descriptor">
+          Love Live! School Idol Discovery is a progressive web app project and designed and coded from the ground up by MN, and created under the guidance of a Udemy PWA tutorial.
         </p>
+        <span class="disclaimer">This page contains images from various sources. Sources will be added here once traced.</span>
+        <span class="emphasized">Credits to these images shall go to those who made and own them.</span>
+      </div>
+      <div class="divider"></div>
+      <div class="footer--texts">
+        <span class="emphasized">Follow this project on GitHub soon!</span>
+        <span id="viewport--current" class="descriptor">Viewport size: </span>
       </div>
     </div>
   </div>
-  <!-- END COMMENTS BOARD -->
+</section>
+
+<!--
+HIDDEN AND ON-DEMAND LAYERS
+-->
+<div id="scrim"></div>
+<!-- NOTIFICATION TOAST -->
+<div id="toast--container">
+  <div id="toast--flexbox">
+    <div id="toast--message" class="toast--child">Here's a jam on toast!</div>
+    <div id="toast--spacer" class="toast--child"></div>
+    <div id="toast--dismiss" class="toast--child"><span id="toast--dismissal" class="span--triggers">DISMISS</span></div>
+  </div>
+</div>
+<!-- END NOTIFICATION TOAST -->
+
+<!-- COMMENT BOX -->
+<div id="addreact--container">
+  <div class="addreact--upload-container">
+    <div id="addreact--upload-file-header"><span class="caption">Upload a photo</span></div>
+    <div id="videoplayer--container">
+      <video id="player" autoplay></video>
+      <canvas id="canvas"></canvas>
+    </div>
+    <div id="videoplayer--notice">Want to take a photo? Allow us to access your camera.</div>
+    <div id="videoplayer--controls-container">
+      <div id="videoplayer--camera-controls" class="addreact--photo-container">
+        <button id="capture-btn" class="outlined camera-control">Capture Photo</button>
+        <button id="feed-btn" class="outlined camera-control">Access Camera</button>
+        <span id="stop-feed" class="text-button camera-control">Stop Camera</span>
+      </div>
+      <div id="pick-image" class="addreact--photo-container">
+        <span>Go ahead, pick one.</span>
+        <input type="file" accept="image/*" id="image-picker">
+      </div>
+    </div>
+  </div>
+
+  <div id="addreact--form-wrapper">
+      <form id="comment" enctype="multipart/form-data">
+        <div class="addreact--input-container">
+          <div id="addreact--name-label" class="label"><label for="name">Name</label></div>
+          <input id="name" type="text" placeholder="Name" name="name" required class="addreact--input-field name-field"/>
+        </div>
+
+        <div class="addreact--input-container">
+          <div id="addreact--comment-label" class="label"><label for="comment-text">Comment</label></div>
+          <textarea wrap="soft" rows="3" cols="40" name="comment-text" id="comment-text" class="addreact--input-field" placeholder="Comment"></textarea>
+        </div>
+      <div id="addreact--form-actions">
+        <button id="react--post" type="submit" class="react--post react--child">Post</button>
+        <span id="react--cancel" class="text-link react--cancel react--child">Cancel</span>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- DRAWER -->
+<!--
+THIS DRAWER IS SCALED AND WILL CONTAIN ELEMENTS THAT ARE HIDDEN ON SPECIFIC
+VIEWPORT WIDTHS. ADJUST ACCORDINGLY WHEN QUERYING. SCALED AT 767PX MINIMUM.
+-->
+<div id="menu-drawer">
+  <div id="drawer--wrapper">
+    <div id="drawer--header">
+      <span class="drawer--child">Love Live!</span>
+    </div>
+    <div id="drawer--destinations">
+      <div class="drawer--destination-sets">
+        <div class="drawer--destination-header">μ's</div>
+        <ul class="drawer--destination-list">
+          <a href="/members/kousaka_honoka.html" class="text-link"><li class="drawer--destination">Kousaka Honoka</li></a>
+          <a href="/members/sonoda_umi.html" class="text-link"><li class="drawer--destination">Sonoda Umi</li></a>
+          <a href="/members/minami_kotori.html" class="text-link"><li class="drawer--destination">Minami Kotori</li></a>
+          <a href="/members/nishikino_maki.html" class="text-link"><li class="drawer--destination">Nishikino Maki</li></a>
+          <a href="/members/koizumi_hanayo.html" class="text-link"><li class="drawer--destination">Koizumi Hanayo</li></a>
+          <a href="/members/hoshizora_rin.html" class="text-link"><li class="drawer--destination">Hoshizora Rin</li></a>
+          <a href="/members/yazawa_nico.html" class="text-link"><li class="drawer--destination">Yazawa Nico</li></a>
+          <a href="/members/ayase_eli.html" class="text-link"><li class="drawer--destination">Ayase Eli</li></a>
+          <a href="/members/toujou_nozomi.html" class="text-link"><li class="drawer--destination">Toujou Nozomi</li></a>
+        </ul>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="drawer--destination-sets">
+        <div class="drawer--destination-header">Aqours</div>
+        <ul class="drawer--destination-list">
+          <a href="#" class="text-link"><li class="drawer--destination">Takami Chika</li></a>
+          <a href="#" class="text-link"><li class="drawer--destination">Sakurauchi Riko</li></a>
+          <a href="#" class="text-link"><li class="drawer--destination">Watanabe You</li></a>
+          <a href="#" class="text-link"><li class="drawer--destination">Hanamaru Kunikida</li></a>
+          <a href="#" class="text-link"><li class="drawer--destination">Kurosawa Ruby</li></a>
+          <a href="#" class="text-link"><li class="drawer--destination">Yoshiko Tsushima</li></a>
+          <a href="#" class="text-link"><li class="drawer--destination">Kurosawa Dia</li></a>
+          <a href="#" class="text-link"><li class="drawer--destination">Matusuura Kanan</li></a>
+          <a href="#" class="text-link"><li class="drawer--destination">Ohara Mari</li></a>
+        </ul>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="drawer--destination-sets">
+        <div class="drawer--destination-header">Event Triggers</div>
+        <ul class="drawer--destination-list">
+          <a id="testNative" href="#" class="text-link"><li class="drawer--destination">Test Device Features</li></a>
+          <li class="drawer--destination"><span id="gimmeToast" class="span--triggers">Gimme a Toast!</span></li>
+          <a id="saveToast" href="#" class="text-link"><li class="drawer--destination">Show 'Post Saved' Message</li></a>
+          <a id="successToast" href="#" class="text-link"><li class="drawer--destination">Show 'Sync Success' Message</li></a>
+          <a id="failedToast" href="#" class="text-link"><li class="drawer--destination">Show 'Sync Failed' Message</li></a>
+          <a id="attemptToast" href="#" class="text-link"><li class="drawer--destination">Show 'Sync Attempting' Message</li></a>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- END DRAWER -->
+
+<!-- NATIVE DEVICE FEATURES LANDING AREA -->
+<div id="native--test-pad">
+  <h3 class="board-header">Native Device Features Testing Pad</h3>
+  <video id="player" autoplay></video>
+  <canvas id="canvas" width="320px" height="240px"></canvas>
+  <button id="capture-btn">Capture Photo</button>
+  <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" id="feed-btn">Start Feed</button>
+  <button id="stop-feed">Stop Feed</button>
+  <div id="pick-image">
+    <h6>Pick an Image instead</h6>
+    <input type="file" accept="image/*" id="image-picker">
+  </div>
+  <div class="divider"></div>
+  <div class="input-section">
+  <button class="mdl-button mdl-js-button mdl-button mdl-button--colored" type="button" id="location-btn">Get Location</button>
+  <div class="mdl-spinner mdl-js-spinner is-active" id="location-loader"></div>
+  </div>
 </div>
 
 <!-- SCRIPTS -->
-<script src="/src/js/feed.js"></script>
+<script defer src="/src/js/jquery-3.1.1.min.js"></script>
+<script defer src="/src/js/jquery-ui.js"></script>
+<script defer src="/src/js/muse.js"></script>
 <script src="/src/js/promise.js"></script>
 <script src="/src/js/fetch.js"></script>
-<script src="/src/js/muse.js"></script>
+<script src="/src/js/idb.js"></script>
+<script src="/src/js/util.js"></script>
+<script src="/src/js/app.js"></script>
+<script src="/src/js/feed.js"></script>
 </body>
 </html>

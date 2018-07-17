@@ -1,0 +1,320 @@
+/*
+TO-DO:
+
+THIS STYLESHEET WILL GOVERN HOW THE PAGE APPEARS
+FOR MEDIUM TO WIDESCREEN DEVICES. THIS SHALL INCLUDE
+COMPUTER SCREENS, TABLETS, AND DEVICES ON LANDSCAPE.
+
+USE ADDITIONAL MEDIA QUERIES TO COVER SMALL DEVICES
+IN LANDSCAPE. PLACE MEDIA QUERY EITHER IN THIS STYLESHEET
+OR IN THE PARENT SHEET.
+
+ADD ALL CLASSES/STYLES WITH ANY MEASUREMENTS TO @MEDIA MIN-WIDTH 767PX.
+
+@MEDIA MIN-WIDTH 1500PX WILL FOLLOW. ADJUSTMENTS WILL BE MADE FOR IN-BETWEENS.
+*/
+
+body {
+  width: 100%;
+	margin: 0px;
+  padding: 0px;
+  background-color: #fff;
+}
+
+section {
+    max-width: 100vw;
+    margin: 0px;
+    padding: 0px;
+}
+
+/* FOR HIGH TO VERY HIGH RESOLUTION DEVICES */
+/*
+@media (min-width: 1500px) {
+  #header {
+    height: 100vh;
+  }
+
+  #cover-image-container {
+    max-width: 100vw;
+    border: 1px solid #ffd800;
+  }
+
+  #cover-image {
+    content:url('/src/images/mfs-image.jpeg');
+	  max-width: 100%;
+	  display: block;
+	  margin: auto;
+		object-fit: contain;
+    border: 1px solid #000;
+  }
+
+  #header-text {
+    /*position: absolute;
+    max-width: 100vw;
+  }
+}
+
+#header {
+  height: 100vh;
+  background-color: #fff;
+}
+
+.board-label-main {
+  font-family: rbt_Black;
+	font-size: calc(0.5rem + 5.5vmin);
+  color: #f50057;
+  margin-bottom: calc(0.5rem + 1.5vmin);
+}
+
+.board-label-sub {
+  font-family: opensans-regular;
+  font-size: calc(0.5rem + 1.8vmin);
+}
+*/
+
+/* FOR MEDIUM RESOLUTION DEVICES */
+@media screen and (max-width: 1050px) {
+  .navbar-flex-container .hide--on-narrow-viewports {
+    display: none;
+  }
+}
+
+/* SCALED AT 1000PX MINIMUM WITH A VIEWPORT OF 1300PX+ */
+#header {
+  height: 100vh;
+  padding-top: calc(0.5rem + 5vmin);
+}
+
+#cover-image-container {
+  max-width: 100vw;
+  /*height: 65vh;*/
+}
+
+#cover-image {
+  content:url('/src/images/mfs-image.jpeg');
+  max-width: 100%;
+  /*max-height: calc(0.5rem + 65vmin);*/
+  display: block;
+  margin: auto;
+	object-fit: contain;
+}
+
+#header-text {
+  /*position: absolute;*/
+  max-width: 100vw;
+  text-align: center;
+}
+
+.board-label-main {
+  font-family: rbt_Black;
+	font-size: calc(0.5rem + 5.5vmin);
+  color: #f50057;
+  margin-bottom: calc(0.5rem + 1.5vmin);
+}
+
+.board-label-sub {
+  font-family: opensans-regular;
+  font-size: calc(0.5rem + 1.8vmin);
+}
+
+.padded {
+  padding: calc(0.5rem + 2vmin);
+}
+
+.marginal {
+  margin: auto;
+  background-color: #fff;
+  box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+}
+
+/* CENTRAL BOARDS */
+.central-board {
+  border: 1px solid #fff;
+  background-color: #fff;
+  padding-top: calc(0.5rem + 15vmin);
+  padding-bottom: calc(0.5rem + 15vmin); /* THE REMAINDER 4VMIN SHOULD BE TAKEN FROM THE NEXT SECTION'S PADDING */
+}
+
+.paragraph-container {
+  width: calc(0.5rem + 80vmin);
+  margin-left: 0px;
+}
+
+.board-header {
+  font-family: rbt_Light;
+  font-size: calc(0.5rem + 4.5vmin); /* 3.1vw */
+  color: #313131;
+  margin-bottom: 0px;
+  text-rendering: geometricPrecision;
+}
+
+.board-paragraph {
+	color: #717171;
+  font-family: opensans-regular;
+  font-size: calc(0.5rem + 1vmin); /* 1.5vw */
+  text-align: left;
+}
+
+.section-photobox {
+  width: calc(0.5rem + 80vmin);
+  height: auto;
+}
+
+.photo {
+  /*content: url('/src/images/muse-group.jpg');*/
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
+  margin: auto;
+  margin-bottom: calc(0.5rem + 1.1vmin);
+  object-fit: contain;
+}
+
+.caption {
+  font-family: opensans-regular, sans-serif;
+}
+
+/* LINK CARDS
+THIS ELEMENTS ARE SCALED FOR 767PX MINIMUM. THIS SHOULD ALSO BE SCALED
+FOR OTHER RESOLUTIONS.
+*/
+.cards {
+    margin-top: calc(0.5rem + 10vmin);
+}
+
+.cardholder {
+  display: inline-block;
+  margin-left: 0.8vmin;
+  min-width: 35vmin;
+  max-width: 40vmin;
+  background-color: #fff;
+  box-shadow: 0 0px 5px rgba(100,100,100,0.20), 0 0px 5px rgba(100,100,100,0.20);
+  border-radius: 5px 5px 5px 5px;
+  -webkit-transition-duration: 0.3s;
+	transition-duration: 0.3s;
+}
+
+.cardholder:hover {
+  background-color: #eee;
+  box-shadow: 5px rgba(100,100,100,0.50), 5px rgba(100,100,100,0.50);
+}
+
+.card-container {
+  padding: 1.5vmin;
+  color: #313131;
+}
+
+.card-title {
+  font-size: calc(0.5rem + 1vmin);
+  font-family: rbt_Bold;
+}
+
+.card-label, .card-desc  {
+  font-family: opensans-regular;
+  font-size: calc(0.5rem + 0.7vmin);
+  color: #919191;
+  padding: 0px;
+}
+
+/* FLEX CONTAINER FOR 2-PANEL POSTS
+THESE ARE SCALED. MAKE SURE TO INCLUDE IN QUERIES/STYLESHEETS
+TO BE USED FOR OTHER DEVICES. SCALED AT 767PX MIN */
+.flex-container {
+  max-width: 100vw;
+  display: flex;
+  flex-flow: row nowrap;
+  vertical-align: top;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-panel {
+  display: inline-flex;
+  vertical-align: middle;
+}
+
+.flex--photobox {
+  width: calc(0.5rem + 70vmin);
+}
+
+.flex--photo {
+  content: url('/src/images/llsif-aqours-group-2.jpg');
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
+  margin: auto;
+  object-fit: contain;
+}
+
+.flex--paragraph-container {
+  width: calc(0.5rem + 40vmin);
+  padding: calc(0.5rem + 1vmin);
+}
+
+.centered {
+  text-align: center;
+}
+
+.expanded {
+  width: 100%;
+}
+
+.nigi {
+  display: inline-flex;
+}
+
+.hidari {
+  text-align: left;
+}
+
+#comment-board {
+  padding-top: calc(0.5rem + 10vmin);
+  padding-bottom: calc(0.5rem + 10vmin);
+  border: 1px solid #fff;
+  background-color: #fff;
+}
+
+.container--comments {
+  width: 60%;
+  margin: auto;
+}
+
+#heading-controls {
+  max-width: 100vw;
+  display: block;
+}
+
+.comments--flexpanel {
+  display: inline-flex;
+  height: calc(0.5rem + 4.5vmin);
+  vertical-align: middle;
+  align-content: center;
+  border: 1px solid #ff0000;
+}
+
+.comments--button-container {
+  margin-top: calc(0.5rem + 1vmin);
+}
+
+#footer {
+  height: 35vh;
+  background-color: #eee;
+  border: 1px solid #eee;
+}
+
+.footer--texts {
+    width: 60%;
+    font-family: rbt_Regular, sans-serif;
+    font-size: calc(0.5rem + 0.7vmin);
+    color: #8e8e8e;
+    margin-top: calc(0.5rem + 3vmin);
+    margin-bottom: calc(0.5rem + 3vmin);
+}
+
+.footer--texts span {
+  display: block;
+}
+
+.emphasized {
+  font-family: rbt_Bold;
+}

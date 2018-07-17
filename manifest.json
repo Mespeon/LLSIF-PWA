@@ -1,11 +1,11 @@
 {
   "name": "Love Live! School Idol Discovery",
-  "short_name": "LL! Discovery",
+  "short_name": "µ's",
   "start_url": "/index.html",
   "scope": ".",
   "display": "standalone",
   "background_color": "#fff",
-  "theme_color": "#3F51B5",
+  "theme_color": "#e91e63",
   "description": "Muse throughout the years!",
   "dir": "ltr",
   "lang": "en-US",

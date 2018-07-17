@@ -1,0 +1,94 @@
+@font-face {
+	font-family: rbt_Black;
+	src: url(/src/fonts/rbt_Black.ttf);
+}
+
+@font-face {
+  font-family: rbt_Bold;
+  src: url(/src/fonts/rbt_Bold.ttf);
+}
+
+@font-face {
+  font-family: rbt_Med;
+  src: url(/src/fonts/rbt_Med.ttf);
+}
+
+@font-face {
+  font-family: rbt_Regular;
+  src: url(/src/fonts/rbt_Regular.ttf);
+}
+
+@font-face {
+	font-family: rbt_Light;
+	src: url(/src/fonts/rbt_Light.ttf);
+}
+
+@font-face {
+	font-family: rbt_cndBold;
+	src: url(/src/fonts/rbt_cndBold.ttf);
+}
+
+@font-face {
+	font-family: rbt_cndRegular;
+	src: url(/src/fonts/rbt_cndRegular.ttf);
+}
+
+@font-face {
+  font-family: montserrat-black;
+  src: url(/src/fonts/Montserrat-Black.ttf);
+}
+
+@font-face {
+  font-family: montserrat-bold;
+  src: url(/src/fonts/Montserrat-Bold.ttf);
+}
+
+@font-face {
+  font-family: montserrat-medium;
+  src: url(/src/fonts/Montserrat-Medium.ttf);
+}
+
+@font-face {
+  font-family: montserrat-regular;
+  src: url(/src/fonts/Montserrat-Regular.ttf);
+}
+
+@font-face {
+  font-family: opensans-bold;
+  src: url(/src/fonts/OpenSans-Bold.ttf);
+}
+
+@font-face {
+  font-family: opensans-light;
+  src: url(/src/fonts/OpenSans-Light.ttf);
+}
+
+@font-face {
+  font-family: opensans-regular;
+  src: url(/src/fonts/OpenSans-Regular.ttf);
+}
+
+@font-face {
+  font-family: opensans-semibold;
+  src: url(/src/fonts/OpenSans-SemiBold.ttf);
+}
+
+@font-face {
+  font-family: rbtSlab-bold;
+  src: url(/src/fonts/RobotoSlab-Bold.ttf);
+}
+
+@font-face {
+  font-family: rbtSlab-light;
+  src: url(/src/fonts/RobotoSlab-Light.ttf);
+}
+
+@font-face {
+  font-family: rbtSlab-regular;
+  src: url(/src/fonts/RobotoSlab-Regular.ttf);
+}
+
+@font-face {
+  font-family: rbtSlab-thin;
+  src: url(/src/fonts/RobotoSlab-Thin.ttf);
+}
